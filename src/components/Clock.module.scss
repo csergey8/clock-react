@@ -1,0 +1,27 @@
+.clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #fff;
+    font-size: 10rem;
+    opacity: 1;
+    animation: fade 5s linear;
+}
+
+@keyframes fade {
+    0% {
+      display: none;
+      opacity: 0;
+    }
+  
+    50% {
+      display: block;
+      opacity: .5;
+    }
+  
+    100% {
+      display: block;
+      opacity: 1;
+    }
+  }

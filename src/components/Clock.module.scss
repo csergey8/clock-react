@@ -6,8 +6,9 @@
     color: #fff;
     font-size: 10rem;
     opacity: 1;
-    animation: fade 5s linear;
+    animation: fade .5s linear;
 }
+
 
 @keyframes fade {
     0% {
@@ -24,4 +25,4 @@
       display: block;
       opacity: 1;
     }
-  }
+}

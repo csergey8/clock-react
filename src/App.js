@@ -10,11 +10,10 @@ export default class App extends Component {
     },
     formats: ['hh:mm A', 'hh:mm:ss A', 'MM/DD/YYYY', 'MMMM Do YY'],
     currentFormat: 0,
-    time: ''
+    time: new Date()
   }
   componentDidMount() {
     this.setState({
-      time: moment(new Date()).format(this.state.formats[this.state.currentFormat]),
       bgColor: {
         backgroundColor: this.bgColorGenerator()
       }
@@ -23,7 +22,7 @@ export default class App extends Component {
   }
 
   tick() {
-    setInterval(() => this.setState({ time: moment(new Date()).format(this.state.formats[this.state.currentFormat])}), 1000)
+    setInterval(() => this.setState({ time: new Date()}), 1000)
   }
 
   bgColorGenerator() {
@@ -39,26 +38,23 @@ export default class App extends Component {
 
   formatChangeHandler = () => {
     let { currentFormat, formats } = this.state;
-    
     currentFormat >= formats.length - 1 ? currentFormat = 0 : currentFormat++
     const newColor = this.bgColorGenerator();
     this.setState({
       currentFormat,
       bgColor: {
         backgroundColor: newColor
-      },
-      time: moment(new Date()).format(this.state.formats[currentFormat])
-    }, () => {
-      console.log(this.state)
-    })
+      }
+    });
   }
 
   render() {
-    const { currentFormat, formats, time } = this.state;
+    const { time, formats, currentFormat } = this.state;
+    const newTime = moment(time).format(formats[currentFormat]);
     return (
       <div className={styles.container} onClick={this.formatChangeHandler} style={this.state.bgColor}>
         <div className={styles.title}>Click anywhere to change formats</div>
-        <Clock time={time} />
+        <Clock time={newTime}/>
       </div>
     )
   }

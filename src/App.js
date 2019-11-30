@@ -5,12 +5,12 @@ import moment from 'moment'
 
 export default class App extends Component {
   state = {
+    time: new Date(),
     bgColor: {
       backgroundColor: ''
     },
     formats: ['hh:mm A', 'hh:mm:ss A', 'MM/DD/YYYY', 'MMMM Do YY'],
-    currentFormat: 0,
-    time: new Date()
+    currentFormat: 0
   }
   componentDidMount() {
     this.setState({
